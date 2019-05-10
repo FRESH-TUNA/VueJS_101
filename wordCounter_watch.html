@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #wordCounter {
+            width: 70%;
+            height: 50%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            background-color: azure;
+        }
+
+        textarea {
+            width: 70%;
+            height: 70%;
+            resize: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wordCounter">
+        <h1>WordCounter</h1>
+        <textarea v-model="message"></textarea>
+        <p>단어수: {{count}}</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+    <script>
+        var wordCounter = new Vue({
+            el: '#wordCounter',
+            data: {
+                message: '',
+                count: 0
+            },
+            watch: {
+                message: function (val) {
+                    this.count = this.message.trim().replace(/\s+/gi, ' ').split(' ').length;
+                }
+            }   
+        });
+    </script>
+</body>
+
+</html>
