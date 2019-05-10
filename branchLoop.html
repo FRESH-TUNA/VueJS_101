@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<body>
+<div>
+    <p v-if="seen" id="p1">이제 나를 볼수 있다...</p>
+</div>
+
+<div id="loopApp">
+        <ol>
+          <li v-for="todo in todos">
+            {{ todo.text }}
+          </li>
+        </ol>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el:'#p1',
+        data: {
+            seen:  true
+        }
+    });
+    
+    var app2 = new Vue({
+        el:'#loopApp',
+        data: {
+            todos: [
+                {text:'참치1'},
+                {text:'참치2'},
+                {text:'참치3'}
+            ]     
+        }
+    });
+
+    //app2.todos[0].text = '야 바꾸자', 동적으로 바뀐다.
+    //app2.todos.push({ text: 'New item' }) 동적으로 추가된다.
+</script>
+</body>
+</html>
